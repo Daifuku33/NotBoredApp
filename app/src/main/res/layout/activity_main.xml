@@ -41,7 +41,7 @@
         android:layout_marginTop="136dp"
         android:background="@color/white"
         android:ems="10"
-        android:inputType="number"
+        android:inputType="text"
         android:minHeight="48dp"
         app:layout_constraintBottom_toTopOf="@+id/startButton"
         app:layout_constraintEnd_toEndOf="parent"

@@ -14,7 +14,6 @@ class TermsAndConditions : AppCompatActivity() {
         binding = TermsAndConditionsBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        //buscar una manera de no abrir una nueva actividad si no
         binding.xButton.setOnClickListener{
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)

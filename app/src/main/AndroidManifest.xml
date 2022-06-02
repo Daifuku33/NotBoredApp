@@ -19,6 +19,11 @@
             android:label="@string/terms_and_conditions"
             android:theme="@style/Theme.NotBoredApp.NoActionBar" />
         <activity
+            android:name=".Activities"
+            android:exported="false"
+            android:label="Activities"
+            android:theme="@style/Theme.NotBoredApp.NoActionBar" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>

@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.notboredapp.databinding.ActivitiesBinding
 
 class Activities : AppCompatActivity() {
@@ -23,6 +24,8 @@ class Activities : AppCompatActivity() {
             Toast.makeText(this,"Boton random apretado", Toast.LENGTH_LONG).show()
         }
 
+        binding.list.layoutManager = LinearLayoutManager(this)
+
         viewModel.getActivities()
 
         viewModel.activities.observe(this) { value ->
@@ -32,5 +35,7 @@ class Activities : AppCompatActivity() {
                 adapter.setActivities(value)
             }
         }
+
+
     }
 }

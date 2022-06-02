@@ -29,7 +29,8 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.startButton.setOnClickListener(){
-            Toast.makeText(this,"Click", Toast.LENGTH_LONG).show()
+            val intent = Intent(this, Activities::class.java)
+            startActivity(intent)
         }
 
         setListeners()

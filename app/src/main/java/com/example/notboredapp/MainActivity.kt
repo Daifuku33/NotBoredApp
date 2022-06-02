@@ -5,13 +5,14 @@ import android.os.Bundle
 import android.text.TextWatcher
 import android.text.Editable
 import android.widget.Toast
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.example.notboredapp.databinding.ActivityMainBinding
 
 
 class MainActivity : AppCompatActivity() {
 
-    private val viewModel: MainViewModel = MainViewModel()
+    private val viewModel: MainViewModel by viewModels()
 
     private lateinit var binding: ActivityMainBinding
 
@@ -19,6 +20,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        binding.startButton.isEnabled = false
 
         //esta funcion deberia estar ligada al texto de terminos y condiciones
         binding.termsAndConditions.setOnClickListener{
@@ -34,6 +36,7 @@ class MainActivity : AppCompatActivity() {
         setObservers()
     }
 
+    //Listeners ve cambios en la vista
     private fun setListeners() {
         binding.ParticipantsNumber.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable) {}
@@ -49,6 +52,7 @@ class MainActivity : AppCompatActivity() {
         })
     }
 
+    //Observer valida cambios en el Viewmodel
     private fun setObservers(){
         viewModel.blockbutton.observe(this){value ->
             binding.startButton.isEnabled = value

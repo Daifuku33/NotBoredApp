@@ -9,5 +9,10 @@ class MainViewModel : ViewModel() {
 
     fun numberVerification(input: String){
         blockbutton.value = NUM_REGEX.toRegex().matches(input)
+        //ver si se puede incluir en REGEX
+        if (blockbutton.value == true && input.toInt() < 1)
+        {
+            blockbutton.value = false
+        }
     }
 }

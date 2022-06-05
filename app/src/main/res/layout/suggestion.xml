@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/sky">
+
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/suggestion_toolbar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/suggestionTitle"
+        android:layout_width="245dp"
+        android:layout_height="62dp"
+        android:gravity="center"
+        android:text="SUGGESTION_TITLE"
+        android:textColor="#000000"
+        android:textSize="21dp"
+        app:layout_constraintBottom_toBottomOf="@+id/toolbar"
+        app:layout_constraintEnd_toEndOf="@+id/toolbar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.695" />
+
+    <Button
+        android:id="@+id/backButton"
+        android:layout_width="67dp"
+        android:layout_height="62dp"
+        android:layout_marginTop="16dp"
+        android:background="@android:color/transparent"
+        app:icon="?attr/actionModeCloseDrawable"
+        app:iconTint="#000000"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.046"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/suggestionName"
+        android:layout_width="355dp"
+        android:layout_height="66dp"
+        android:layout_marginTop="116dp"
+        android:gravity="center"
+        android:text="SUGGESTION TITLE NAME OR ACTIVIY"
+        android:textSize="28dp"
+        app:layout_constraintBottom_toTopOf="@+id/tryAnotherButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <ImageView
+        android:id="@+id/participantsImage"
+        android:layout_width="58dp"
+        android:layout_height="65dp"
+        android:layout_marginStart="28dp"
+        app:layout_constraintBottom_toTopOf="@+id/tryAnotherButton"
+        app:layout_constraintEnd_toStartOf="@+id/participantsText"
+        app:layout_constraintHorizontal_bias="0.142"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/suggestionName"
+        app:layout_constraintVertical_bias="0.216"
+        app:srcCompat="@android:drawable/ic_menu_myplaces" />
+
+
+    <TextView
+        android:id="@+id/participantsText"
+        android:layout_width="151dp"
+        android:layout_height="46dp"
+        android:layout_marginTop="80dp"
+        android:layout_marginEnd="88dp"
+        android:text="Participants"
+        android:textSize="26dp"
+        app:layout_constraintBottom_toTopOf="@+id/tryAnotherButton"
+        app:layout_constraintEnd_toStartOf="@+id/participantsNumber"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/suggestionName"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/participantsNumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="80dp"
+        android:layout_marginEnd="56dp"
+        android:text="N"
+        android:textSize="26dp"
+        app:layout_constraintBottom_toBottomOf="@+id/participantsText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/suggestionName"
+        app:layout_constraintVertical_bias="0.09" />
+
+    <TextView
+        android:id="@+id/dollarsign"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="36dp"
+        android:text="$"
+        android:textSize="36sp"
+        app:layout_constraintBottom_toTopOf="@+id/tryAnotherButton"
+        app:layout_constraintEnd_toStartOf="@+id/PriceNumber"
+        app:layout_constraintHorizontal_bias="0.04"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/participantsImage"
+        app:layout_constraintVertical_bias="0.256" />
+
+    <TextView
+        android:id="@+id/price"
+        android:layout_width="151dp"
+        android:layout_height="46dp"
+        android:layout_marginTop="52dp"
+        android:layout_marginEnd="72dp"
+        android:text="Price"
+        android:textSize="26dp"
+        app:layout_constraintBottom_toTopOf="@+id/tryAnotherButton"
+        app:layout_constraintEnd_toStartOf="@+id/PriceNumber"
+        app:layout_constraintHorizontal_bias="0.241"
+        app:layout_constraintStart_toEndOf="@+id/dollarsign"
+        app:layout_constraintTop_toBottomOf="@+id/participantsText"
+        app:layout_constraintVertical_bias="0.014" />
+
+    <TextView
+        android:id="@+id/PriceNumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="60dp"
+        android:text="N"
+        android:textSize="26dp"
+        app:layout_constraintBottom_toTopOf="@+id/tryAnotherButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/participantsNumber"
+        app:layout_constraintVertical_bias="0.334" />
+
+    <Button
+        android:id="@+id/tryAnotherButton"
+        android:layout_width="332dp"
+        android:layout_height="67dp"
+        android:layout_marginBottom="32dp"
+        android:backgroundTint="@color/blue"
+        android:text="@string/tryAnother_button"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

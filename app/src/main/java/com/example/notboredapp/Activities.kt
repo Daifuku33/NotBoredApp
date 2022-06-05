@@ -1,5 +1,6 @@
 package com.example.notboredapp
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.viewModels
@@ -20,8 +21,10 @@ class Activities : AppCompatActivity() {
         binding = ActivitiesBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        //probando nueva vista
         binding.RandomButton.setOnClickListener{
-            Toast.makeText(this,"Boton random apretado", Toast.LENGTH_LONG).show()
+            val intent = Intent(this, Suggestion::class.java)
+            startActivity(intent)
         }
 
         binding.list.layoutManager = LinearLayoutManager(this)

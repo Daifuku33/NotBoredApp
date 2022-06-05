@@ -13,6 +13,9 @@ class ActivitiesRepository {
         Activity("Cooking"),
         Activity("Relaxation"),
         Activity("Music"),
+        Activity("Busywork"),
+        Activity("Busywork"),
+        Activity("Busywork"),
         Activity("Busywork"))
 
     fun getActivities(): List<Activity>{

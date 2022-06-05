@@ -28,7 +28,6 @@ class ActivityAdapter: RecyclerView.Adapter<ActivityAdapter.ActivityViewHolder>(
         return this.activities.size
     }
 
-
     class ActivityViewHolder(
         private val binding: ActivitiesItemLayoutBinding
     ): RecyclerView.ViewHolder(binding.root) {

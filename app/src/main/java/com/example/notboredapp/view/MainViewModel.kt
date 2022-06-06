@@ -1,4 +1,4 @@
-package com.example.notboredapp
+package com.example.notboredapp.view
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel

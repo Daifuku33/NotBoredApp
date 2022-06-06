@@ -1,4 +1,6 @@
-package com.example.notboredapp
+package com.example.notboredapp.data.repository
+
+import com.example.notboredapp.models.Activity
 
 
 class ActivitiesRepository {
@@ -16,7 +18,8 @@ class ActivitiesRepository {
         Activity("Busywork"),
         Activity("Busywork"),
         Activity("Busywork"),
-        Activity("Busywork"))
+        Activity("Busywork")
+    )
 
     fun getActivities(): List<Activity>{
         return activities

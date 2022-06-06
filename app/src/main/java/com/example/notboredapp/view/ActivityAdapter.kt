@@ -1,9 +1,10 @@
-package com.example.notboredapp
+package com.example.notboredapp.view
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.notboredapp.databinding.ActivitiesItemLayoutBinding
+import com.example.notboredapp.models.Activity
 
 class ActivityAdapter: RecyclerView.Adapter<ActivityAdapter.ActivityViewHolder>() {
 

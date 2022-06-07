@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.notboredapp.databinding.ActivitiesItemLayoutBinding
 import com.example.notboredapp.models.Activity
 
-class ActivityAdapter: RecyclerView.Adapter<ActivityAdapter.ActivityViewHolder>() {
+class ActivityAdapter(private val activityListener : ActivityListener): RecyclerView.Adapter<ActivityAdapter.ActivityViewHolder>() {
 
     private lateinit var activities: List<Activity>
 
@@ -18,7 +18,7 @@ class ActivityAdapter: RecyclerView.Adapter<ActivityAdapter.ActivityViewHolder>(
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ActivityViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
         val binding = ActivitiesItemLayoutBinding.inflate(layoutInflater,parent,false)
-        return ActivityViewHolder(binding)
+        return ActivityViewHolder(binding, activityListener)
     }
 
     override fun onBindViewHolder(holder: ActivityViewHolder, position: Int) {
@@ -30,11 +30,18 @@ class ActivityAdapter: RecyclerView.Adapter<ActivityAdapter.ActivityViewHolder>(
     }
 
     class ActivityViewHolder(
-        private val binding: ActivitiesItemLayoutBinding
+        private val binding: ActivitiesItemLayoutBinding,
+        private val activityListener : ActivityListener
     ): RecyclerView.ViewHolder(binding.root) {
         fun bind(activity: Activity) {
             this.binding.title.text = activity.category
-            //this.binding.selectButton =
+            this.binding.selectButton.setOnClickListener{
+                activityListener.onSelect(activity.category)
+            }
         }
+    }
+
+    interface ActivityListener{
+        fun onSelect(activityName : String)
     }
 }

@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import com.example.notboredapp.Utils
 import com.example.notboredapp.databinding.SuggestionBinding
 
 class Suggestion : AppCompatActivity() {
@@ -19,11 +20,15 @@ class Suggestion : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = SuggestionBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        val participants = this.intent.extras?.getInt("participants") ?: 0
+        val participants = this.intent.extras?.getInt(Utils.participantsLabel) ?: 0
+        val type = this.intent.extras?.getString(Utils.typeLabel) ?: ""
 
         setObservers()
 
-        viewModel.getRandomSuggestion(participants)
+        if(type.equals(""))
+            viewModel.getRandomSuggestion(participants)
+        else
+            viewModel.getSuggestion(participants,type)
 
         binding.tryAnotherButton.setOnClickListener {
             viewModel.getRandomSuggestion(participants)

@@ -43,5 +43,32 @@ class SuggestionViewModel(
         })
     }
 
+    fun getSuggestion(participantsNumber : Int, type : String) {
+
+        error.value = null
+        suggestion.value = null
+        loading.value = true
+
+        repository.getSuggestionByParticipantsAndType(participantsNumber, type, object: RepositoryListener<SuggestionModel> {
+
+            override fun onResponse(response: RepositoryResponse<SuggestionModel>) {
+                val suggestionResponse = response.data
+
+                loading.value = false
+                error.value = null
+                suggestion.value = suggestionResponse
+            }
+
+            override fun onError(repositoryError: RepositoryError) {
+                val message = "${repositoryError.message} (code: ${repositoryError.code})"
+
+                loading.value = false
+                error.value = message
+                suggestion.value = null
+            }
+
+        })
+    }
+
 }
 

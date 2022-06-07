@@ -6,6 +6,7 @@ import android.text.TextWatcher
 import android.text.Editable
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import com.example.notboredapp.Utils
 import com.example.notboredapp.databinding.ActivityMainBinding
 
 
@@ -29,6 +30,7 @@ class MainActivity : AppCompatActivity() {
 
         binding.startButton.setOnClickListener{
             val intent = Intent(this, Activities::class.java)
+            intent.putExtra(Utils.participantsLabel,viewModel.participantsNumber)
             startActivity(intent)
         }
 

@@ -7,8 +7,8 @@ class SuggestionRepository(
     private val remoteDataSource: SuggestionRemoteDataSource
 ) {
 
-        fun getRandomSuggestion(listener: RepositoryListener<SuggestionModel>) {
-            this.remoteDataSource.getRandomSuggestion(listener)
+        fun getRandomSuggestion(participantsNumber : Int, listener: RepositoryListener<SuggestionModel>) {
+            this.remoteDataSource.getRandomSuggestion(participantsNumber, listener)
         }
 
         fun getSuggestionByParticipantsAndType(participants: Int,type: String, listener: RepositoryListener<SuggestionModel>) {

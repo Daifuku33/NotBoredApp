@@ -9,8 +9,8 @@ import retrofit2.http.Path
 
 interface SuggestionService {
 
-    @GET("/api/activity/")
-    fun getRandomSuggestion(): Call<SuggestionModel>
+    @GET("/api/activity?participants={participants}")
+    fun getRandomSuggestion(@Path("participants") participants: Int): Call<SuggestionModel>
 
     @GET("/api/activity?participants={participants}&type={type}")
     fun getSuggestionByParticipantsAndType(@Path("participants") participants: Int,@Path("type") type: String): Call<SuggestionModel>

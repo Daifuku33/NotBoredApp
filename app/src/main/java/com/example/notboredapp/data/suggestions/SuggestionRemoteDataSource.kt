@@ -8,11 +8,11 @@ import retrofit2.Response
 
 class SuggestionRemoteDataSource {
 
-    fun getRandomSuggestion(listener: RepositoryListener<SuggestionModel>) {
+    fun getRandomSuggestion(participantsNumber: Int,listener: RepositoryListener<SuggestionModel>) {
 
         val service = RetrofitService.instance
             .create(SuggestionService::class.java)
-            .getRandomSuggestion()
+            .getRandomSuggestion(participantsNumber)
 
         service.enqueue(object : Callback<SuggestionModel> {
 

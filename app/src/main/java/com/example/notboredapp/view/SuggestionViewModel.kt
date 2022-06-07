@@ -16,13 +16,13 @@ class SuggestionViewModel(
     val loading = MutableLiveData<Boolean>(false)
     val error = MutableLiveData<String?>(null)
 
-    fun getRandomSuggestion() {
+    fun getRandomSuggestion(participantsNumber : Int) {
 
         error.value = null
         suggestion.value = null
         loading.value = true
 
-        repository.getRandomSuggestion(object: RepositoryListener<SuggestionModel> {
+        repository.getRandomSuggestion(participantsNumber, object: RepositoryListener<SuggestionModel> {
 
             override fun onResponse(response: RepositoryResponse<SuggestionModel>) {
                 val suggestionResponse = response.data

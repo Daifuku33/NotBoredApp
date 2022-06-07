@@ -19,13 +19,14 @@ class Suggestion : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = SuggestionBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        var participants = this.intent.extras?.getInt("participants")
 
         setObservers()
 
-        viewModel.getRandomSuggestion()
+        viewModel.getRandomSuggestion(participants)
 
         binding.tryAnotherButton.setOnClickListener {
-            Toast.makeText(this, "Try another apretado", Toast.LENGTH_LONG).show()
+            viewModel.getRandomSuggestion(participants)
         }
 
         binding.backButton.setOnClickListener{
@@ -37,15 +38,21 @@ class Suggestion : AppCompatActivity() {
     fun setObservers() {
         viewModel.suggestion.observe(this) { value ->
             if (value != null) {
-                binding.suggestionTitle.text = value.type
+                binding.suggestionTitle.text = value.type.toString().uppercase()
                 binding.suggestionName.text = value.activity
                 binding.participantsNumber.text = value.participants.toString()
                 binding.PriceNumber.text = value.price.toString()
             } else {
-                binding.suggestionTitle.text = "NADA"
-                binding.suggestionName.text = "NADA"
+                binding.suggestionTitle.text = ""
+                binding.suggestionName.text = ""
                 binding.participantsNumber.text = ""
                 binding.PriceNumber.text = ""
+            }
+        }
+
+        viewModel.error.observe(this) { value ->
+            if(value != null){
+                Toast.makeText(this, value, Toast.LENGTH_LONG).show()
             }
         }
     }

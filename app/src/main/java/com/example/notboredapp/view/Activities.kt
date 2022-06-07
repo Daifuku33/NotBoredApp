@@ -5,6 +5,7 @@ import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.notboredapp.Utils
 import com.example.notboredapp.databinding.ActivitiesBinding
 
 class Activities : AppCompatActivity() {
@@ -19,10 +20,11 @@ class Activities : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivitiesBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
+        val participants = this.intent.extras?.getInt(Utils.participantsLabel)
         //probando nueva vista
         binding.RandomButton.setOnClickListener{
             val intent = Intent(this, Suggestion::class.java)
+            intent.putExtra(Utils.participantsLabel,participants)
             startActivity(intent)
         }
 

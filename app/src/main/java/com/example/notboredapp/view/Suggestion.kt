@@ -19,7 +19,7 @@ class Suggestion : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = SuggestionBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        var participants = this.intent.extras?.getInt("participants")
+        val participants = this.intent.extras?.getInt("participants") ?: 0
 
         setObservers()
 
@@ -35,10 +35,10 @@ class Suggestion : AppCompatActivity() {
         }
     }
 
-    fun setObservers() {
+    private fun setObservers() {
         viewModel.suggestion.observe(this) { value ->
             if (value != null) {
-                binding.suggestionTitle.text = value.type.toString().uppercase()
+                binding.suggestionTitle.text = value.type.uppercase()
                 binding.suggestionName.text = value.activity
                 binding.participantsNumber.text = value.participants.toString()
                 binding.PriceNumber.text = value.price.toString()

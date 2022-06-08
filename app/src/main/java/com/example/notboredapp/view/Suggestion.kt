@@ -23,19 +23,26 @@ class Suggestion : AppCompatActivity() {
         val participants = this.intent.extras?.getInt(Utils.participantsLabel) ?: 0
         val type = this.intent.extras?.getString(Utils.typeLabel) ?: ""
 
-        setObservers()
-
-        if(type.equals(""))
+        if(type == "")
             viewModel.getRandomSuggestion(participants)
         else
             viewModel.getSuggestion(participants,type)
 
+        setListeners(participants,type)
+        setObservers()
+    }
+
+    private fun setListeners(participants: Int, type: String){
         binding.tryAnotherButton.setOnClickListener {
-            viewModel.getRandomSuggestion(participants)
+            if (type == "")
+                viewModel.getRandomSuggestion(participants)
+            else
+                viewModel.getSuggestion(participants,type)
         }
 
         binding.backButton.setOnClickListener{
             val intent = Intent(this, Activities::class.java)
+            intent.putExtra(Utils.participantsLabel,participants)
             startActivity(intent)
         }
     }
@@ -43,10 +50,18 @@ class Suggestion : AppCompatActivity() {
     private fun setObservers() {
         viewModel.suggestion.observe(this) { value ->
             if (value != null) {
-                binding.suggestionTitle.text = value.type.uppercase()
-                binding.suggestionName.text = value.activity
-                binding.participantsNumber.text = value.participants.toString()
-                binding.PriceNumber.text = value.price.toString()
+                try {
+                    binding.suggestionTitle.text = value.type.uppercase()
+                    binding.suggestionName.text = value.activity
+                    binding.participantsNumber.text = value.participants.toString()
+                    //binding.PriceNumber.text = viewModel.priceRange
+                    binding.PriceNumber.text = value.price.toString()
+                }catch (e: Exception) {
+                    binding.suggestionTitle.text = ""
+                    binding.suggestionName.text = ""
+                    binding.participantsNumber.text = ""
+                    binding.PriceNumber.text = ""
+                }
             } else {
                 binding.suggestionTitle.text = ""
                 binding.suggestionName.text = ""

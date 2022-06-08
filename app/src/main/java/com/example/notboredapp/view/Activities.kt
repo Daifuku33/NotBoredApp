@@ -30,7 +30,7 @@ class Activities : AppCompatActivity() {
                 val adapter = ActivityAdapter(object: ActivityAdapter.ActivityListener{
                     override fun onSelect(activityName: String) {
                         val intent = Intent(this@Activities , Suggestion::class.java)
-                        intent.putExtra(Utils.participantsLabel,1)
+                        intent.putExtra(Utils.participantsLabel,participants)
                         intent.putExtra(Utils.typeLabel, activityName.lowercase())
                         startActivity(intent)
                     }

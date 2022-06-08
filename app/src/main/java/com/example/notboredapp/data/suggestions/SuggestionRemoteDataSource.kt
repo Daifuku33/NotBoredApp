@@ -58,8 +58,6 @@ class SuggestionRemoteDataSource {
         type: String,
         listener: RepositoryListener<SuggestionModel>
     ) {
-        println("TIPO $type")
-        println("PARTICIPANTS $participants")
         val service = RetrofitService.instance
             .create(SuggestionService::class.java)
             .getSuggestionByParticipantsAndType(participants, type)
